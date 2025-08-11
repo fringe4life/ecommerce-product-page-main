@@ -1,11 +1,12 @@
+@layer base, layout, components;
 /* ===== DESIGN TOKENS ===== */
-@import url('./design-tokens.css');
+@import url('./design-tokens.css') layer(base);
 
 /* ===== COMPONENT IMPORTS ===== */
-@import url('./components/layout.css');
-@import url('./components/header.css');
-@import url('./components/gallery.css');
-@import url('./components/product-info.css');
-@import url('./components/cart.css');
-@import url('./components/lightbox.css');
-@import url('./components/mobile-menu.css'); 
+@import url('./components/layout.css') layer(layout);
+@import url('./components/header.css') layer(components.header);
+@import url('./components/gallery.css') layer(components.gallery);
+@import url('./components/product-info.css') layer(components.product-info);
+@import url('./components/cart.css') layer(components.cart);
+@import url('./components/lightbox.css') layer(components.lightbox);
+@import url('./components/mobile-menu.css') layer(components.mobile-menu); 

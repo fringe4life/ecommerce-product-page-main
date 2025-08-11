@@ -7,15 +7,33 @@
   border-radius: 1rem;
   overflow: hidden;
   margin-block-end: var(--spacing-300);
-}
-
-.gallery-main-img {
+  position: relative;
   aspect-ratio: 1;
 
   @media (min-width: 768px) and (max-width: 1023px) {
     aspect-ratio: 304 / 145;
-    object-position: top;
   }
+}
+
+/* Image wrapper for transitions */
+.gallery-image-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.gallery-image-slide {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  transition: translate 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.gallery-image-slide.active {
+  translate: 0 0;
+  opacity: 1;
 }
 
 .gallery-lightbox-icon {

@@ -16,9 +16,13 @@ const state = {
 // ===== DOM ELEMENTS =====
 const elements = {
   // Gallery elements
-  galleryMain: document.querySelector('.gallery-main-img'),
+  galleryWrapper: document.querySelector('.gallery-image-wrapper'),
+  galleryMain: document.querySelector('.gallery-image-slide'),
   galleryThumbs: document.querySelectorAll('.gallery-thumb'),
   galleryControls: document.querySelectorAll('.gallery-control'),
+  
+  // Templates
+  cartItemTemplate: document.querySelector('#cart-item-template'),
   
   // Lightbox elements
   lightbox: document.querySelector('.lightbox'),
@@ -76,33 +80,89 @@ const productData = {
   ]
 };
 
+
+
 // ===== GALLERY FUNCTIONS =====
-
-
 
 /**
  * Updates both galleries to the same image index
  * @param {number} index - The image index to display
+ * @param {string} direction - The direction of the transition ('next', 'prev', or null)
  */
-const updateImage = (index) => {
-  state.currentImageIndex = index;
-  
-  // Update main gallery
-  elements.galleryMain.src = productData.images[index];
-  elements.galleryMain.alt = `Product image ${index + 1}`;
-  
-  elements.galleryThumbs.forEach((thumb, i) => {
-          thumb.classList.toggle('gallery-thumb-active', i === index);
-  });
-  
-  // Update lightbox if open
-  if (state.isLightboxOpen) {
-    elements.lightboxMain.src = productData.images[index];
-    elements.lightboxMain.alt = `Product image ${index + 1}`;
+const updateImage = (index, direction = null) => {
+  const performTransition = () => {
+    state.currentImageIndex = index;
     
-    elements.lightboxThumbs.forEach((thumb, i) => {
-      thumb.classList.toggle('lightbox-thumb-active', i === index);
+    // Update main gallery
+    elements.galleryMain.src = productData.images[index];
+    elements.galleryMain.alt = `Product image ${index + 1}`;
+    
+    elements.galleryThumbs.forEach((thumb, i) => {
+      thumb.classList.toggle('gallery-thumb-active', i === index);
     });
+    
+    // Update lightbox if open
+    if (state.isLightboxOpen) {
+      elements.lightboxMain.src = productData.images[index];
+      elements.lightboxMain.alt = `Product image ${index + 1}`;
+      
+      elements.lightboxThumbs.forEach((thumb, i) => {
+        thumb.classList.toggle('lightbox-thumb-active', i === index);
+      });
+    }
+  };
+
+  if (direction) {
+    // Create slide transition
+    const currentImage = elements.galleryMain;
+    const newImage = currentImage.cloneNode(true);
+    
+    // Set up new image
+    newImage.src = productData.images[index];
+    newImage.alt = `Product image ${index + 1}`;
+    newImage.classList.remove('active');
+    
+    // Position new image based on direction
+    if (direction === 'next') {
+      newImage.style.translate = '100% 0';
+      newImage.style.opacity = '0';
+    } else {
+      newImage.style.translate = '-100% 0';
+      newImage.style.opacity = '0';
+    }
+    
+    // Add new image to wrapper
+    elements.galleryWrapper.appendChild(newImage);
+    
+    // Trigger transition
+    requestAnimationFrame(() => {
+      // Animate current image out
+      if (direction === 'next') {
+        currentImage.style.translate = '-100% 0';
+        currentImage.style.opacity = '0';
+      } else {
+        currentImage.style.translate = '100% 0';
+        currentImage.style.opacity = '0';
+      }
+      
+      // Animate new image in
+      newImage.style.translate = '0 0';
+      newImage.style.opacity = '1';
+      
+      // After transition, update state and clean up
+      setTimeout(() => {
+        performTransition();
+        
+        // Remove old image and clean up
+        currentImage.remove();
+        newImage.classList.add('active');
+        newImage.style.translate = '';
+        newImage.style.opacity = '';
+      }, 300);
+    });
+  } else {
+    // No transition for direct thumbnail clicks
+    performTransition();
   }
 };
 
@@ -111,7 +171,7 @@ const updateImage = (index) => {
  */
 const nextImage = () => {
   const nextIndex = (state.currentImageIndex + 1) % productData.images.length;
-  updateImage(nextIndex);
+  updateImage(nextIndex, 'next');
 };
 
 /**
@@ -121,7 +181,7 @@ const previousImage = () => {
   const prevIndex = state.currentImageIndex === 0 
     ? productData.images.length - 1 
     : state.currentImageIndex - 1;
-  updateImage(prevIndex);
+  updateImage(prevIndex, 'prev');
 };
 
 // ===== CART FUNCTIONS =====
@@ -146,20 +206,27 @@ const updateCartDisplay = () => {
     elements.cartItems.style.display = 'block';
     elements.cartCheckout.style.display = 'block';
     
-    // Update cart items HTML
-    elements.cartItems.innerHTML = state.cartItems.map(item => `
-      <div class="cart-item">
-        <img src="${productData.thumbnails[0]}" alt="${item.name}" class="cart-item-img">
-        <div class="cart-item-info">
-          <div class="cart-item-title preset-4">${item.name}</div>
-          <div class="cart-item-price preset-4">$${item.price.toFixed(2)} × ${item.quantity}</div>
-        </div>
-        <div class="cart-item-total preset-3-bold">$${(item.price * item.quantity).toFixed(2)}</div>
-        <button class="cart-item-delete" aria-label="Remove item from cart">
-          <img src="./images/icon-delete.svg" alt="" class="cart-item-delete-icon">
-        </button>
-      </div>
-    `).join('');
+    // Update cart items HTML using template
+    elements.cartItems.innerHTML = '';
+    state.cartItems.forEach(item => {
+      const template = elements.cartItemTemplate.content.cloneNode(true);
+      const cartItem = template.querySelector('.cart-item');
+      
+      // Set image
+      const img = cartItem.querySelector('.cart-item-img');
+      img.src = productData.thumbnails[0];
+      img.alt = item.name;
+      
+      // Set text content
+      cartItem.querySelector('.cart-item-title').textContent = item.name;
+      cartItem.querySelector('.cart-item-price').textContent = `$${item.price.toFixed(2)} × ${item.quantity}`;
+      cartItem.querySelector('.cart-item-total').textContent = `$${(item.price * item.quantity).toFixed(2)}`;
+      
+      // Add data attribute for identification
+      cartItem.dataset.itemName = item.name;
+      
+      elements.cartItems.appendChild(template);
+    });
   }
 };
 
@@ -333,7 +400,7 @@ const closeMobileMenu = () => {
 const setupEventListeners = () => {
   // Gallery thumbnail clicks
   elements.galleryThumbs.forEach((thumb, index) => {
-    thumb.addEventListener('click', () => updateImage(index));
+    thumb.addEventListener('click', () => updateImage(index, null));
   });
   
   // Gallery controls
@@ -347,7 +414,7 @@ const setupEventListeners = () => {
   
   // Lightbox thumbnail clicks
   elements.lightboxThumbs.forEach((thumb, index) => {
-    thumb.addEventListener('click', () => updateImage(index));
+    thumb.addEventListener('click', () => updateImage(index, null));
   });
   
   // Lightbox controls
@@ -449,8 +516,8 @@ const setupEventListeners = () => {
   elements.cartItems.addEventListener('click', (e) => {
     if (e.target.closest('.cart-item-delete')) {
       const cartItem = e.target.closest('.cart-item');
-      const itemTitle = cartItem.querySelector('.cart-item-title').textContent;
-      removeFromCart(itemTitle);
+      const itemName = cartItem.dataset.itemName;
+      removeFromCart(itemName);
     }
   });
 };

@@ -54,7 +54,9 @@
         <div class="product-gallery">
           <div class="gallery">
             <div class="gallery-main">
-              <img src="./images/image-product-1.jpg" alt="Product image 1" class="gallery-main-img" data-index="0">
+              <div class="gallery-image-wrapper">
+                <img src="./images/image-product-1.jpg" alt="Product image 1" class="gallery-image-slide active" data-index="0">
+              </div>
               <button class="gallery-lightbox-btn" aria-label="Open lightbox">
                 <img src="./images/icon-view.svg" alt="" class="gallery-lightbox-icon">
               </button>
@@ -135,12 +137,14 @@
       <div class="cart-items" aria-hidden="true">
         <!-- Cart items will be dynamically inserted here -->
       </div>
-              <button class="btn btn-primary btn-checkout" aria-hidden="true">
+      
+      <!-- Cart Item Template -->
+      <button class="btn btn-primary btn-checkout" aria-hidden="true">
         Checkout
       </button>
     </div>
   </dialog>
-
+  
   <!-- Lightbox Modal -->
   <dialog class="lightbox" aria-label="Product gallery">
     <div class="lightbox-content">
@@ -172,7 +176,7 @@
                       <button class="lightbox-control lightbox-control-prev" aria-label="Previous image">
             <img src="./images/icon-previous.svg" alt="" class="lightbox-control-icon">
           </button>
-                      <button class="lightbox-control lightbox-control-next" aria-label="Next image">
+          <button class="lightbox-control lightbox-control-next" aria-label="Next image">
             <img src="./images/icon-next.svg" alt="" class="lightbox-control-icon">
           </button>
         </div>
@@ -208,7 +212,20 @@
       </nav>
     </div>
   </dialog>
-
-  <script src="script.js"></script>
+  <template id="cart-item-template">
+    <div class="cart-item">
+      <img src="" alt="" class="cart-item-img">
+      <div class="cart-item-info">
+        <div class="cart-item-title preset-4"></div>
+        <div class="cart-item-price preset-4"></div>
+      </div>
+      <div class="cart-item-total preset-3-bold"></div>
+      <button class="cart-item-delete" aria-label="Remove item from cart">
+        <img src="./images/icon-delete.svg" alt="" class="cart-item-delete-icon">
+      </button>
+    </div>
+  </template>
+  
+  <script src="script.js" type="module"></script>
 </body>
 </html>
