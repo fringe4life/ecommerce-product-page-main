@@ -1,10 +1,8 @@
 /* ===== APP CONTAINER ===== */
 .app-container {
-  --_header-height: 5.25rem; /* 84px - desktop/tablet */
-  --_header-margin: 1.75rem; /* 28px - desktop/tablet */
   display: grid;
-  grid-template-rows: var(--_header-height) 1fr;
-  gap: var(--_header-margin);
+  grid-template-rows: var(--_header-height, 5.25rem) 1fr;
+  gap: var(--_header-margin, var(--spacing-1200));
   min-block-size: 100vh;
   position: relative;
   max-inline-size: 1200px;
@@ -15,9 +13,9 @@
     padding-inline: var(--spacing-400);
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1024px) {
     --_header-height: 1.5rem; /* 24px - mobile */
-    --_header-margin: 1.125rem; /* 18px - mobile */
+    --_header-margin: 3rem; /* 18px - mobile */
   }
 }
 

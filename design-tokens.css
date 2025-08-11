@@ -17,8 +17,6 @@
   --color-orange-500: hsl(26, 100%, 55%); /* #FF7E1B */
   --color-orange-300: hsl(26, 100%, 71%); /* #FFAB6A */
 
-  --_header-height: 5.25rem; /* 84px - desktop/tablet */
-  --_header-margin: 1.75rem; /* 28px - desktop/tablet */
 }
 
 /* ===== SPACING ===== */

@@ -1,7 +1,7 @@
 /* ===== PRODUCT INFO ===== */
 .product-info {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  align-content: center;
   gap: var(--spacing-400);
 }
 
@@ -21,8 +21,9 @@
 }
 
 .product-pricing {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
   align-items: center;
   gap: var(--spacing-200);
 }
