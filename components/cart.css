@@ -1,7 +1,7 @@
 /* ===== CART DROPDOWN ===== */
 .cart {
   position: fixed;
-  inset: calc(var(--_header-height) + var(--_header-margin)) 1rem auto auto;
+  inset: calc(var(--_header-height) + .5rem) 1rem auto auto;
   background-color: var(--color-white);
   border-radius: 0.625rem; /* 10px */
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);

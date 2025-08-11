@@ -34,6 +34,9 @@
   --spacing-1200: 6rem; /* 96px */
   --spacing-1300: 6.5rem; /* 104px */
   --spacing-1600: 8rem; /* 128px */
+
+  --_header-height: 5.25rem; /* 84px - desktop/tablet */
+  --_nav-margin:  1.75rem; /* 28px - desktop/tablet */
 }
 
 /* ===== TYPOGRAPHY ===== */

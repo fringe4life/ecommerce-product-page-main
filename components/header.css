@@ -36,6 +36,10 @@
   aspect-ratio: 1;
 }
 
+.nav-logo {
+  justify-self: start;
+}
+
 .nav-logo-img {
   inline-size: 8.5rem;
   aspect-ratio: 7 / 1;
