@@ -1,0 +1,137 @@
+/* Design Tokens - Ecommerce Product Page */
+
+/* ===== COLORS ===== */
+:root {
+  /* Base Colors */
+  --color-white: hsl(0, 100%, 100%); /* #FFFFFF */
+  --color-black: hsl(0, 0%, 0%); /* #000000 */
+  
+  /* Grey Scale */
+  --color-grey-950: hsl(220, 13%, 13%); /* #1D2026 */
+  --color-grey-500: hsl(219, 9%, 45%); /* #69707D */
+  --color-grey-300: hsl(221, 22%, 81%); /* #C3CAD9 */
+  --color-grey-100: hsl(219, 35%, 92%); /* #E4E9F2 */
+  --color-grey-50: hsl(223, 64%, 98%); /* #F6F8FD */
+  
+  /* Orange Colors */
+  --color-orange-500: hsl(26, 100%, 55%); /* #FF7E1B */
+  --color-orange-300: hsl(26, 100%, 71%); /* #FFAB6A */
+
+  --_header-height: 5.25rem; /* 84px - desktop/tablet */
+  --_header-margin: 1.75rem; /* 28px - desktop/tablet */
+}
+
+/* ===== SPACING ===== */
+:root {
+  --spacing-0: 0rem; /* 0px */
+  --spacing-100: 0.5rem; /* 8px */
+  --spacing-200: 1rem; /* 16px */
+  --spacing-300: 1.5rem; /* 24px */
+  --spacing-400: 2rem; /* 32px */
+  --spacing-500: 2.5rem; /* 40px */
+  --spacing-600: 3rem; /* 48px */
+  --spacing-700: 3.5rem; /* 56px */
+  --spacing-900: 4.5rem; /* 72px */
+  --spacing-1000: 5rem; /* 80px */
+  --spacing-1200: 6rem; /* 96px */
+  --spacing-1300: 6.5rem; /* 104px */
+  --spacing-1600: 8rem; /* 128px */
+}
+
+/* ===== TYPOGRAPHY ===== */
+:root {
+  --font-family: 'Kumbh Sans', sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+}
+
+/* ===== FONT PRESETS ===== */
+.preset-1 {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: 2.75rem; /* 44px */
+  line-height: 3rem; /* 48px */
+  letter-spacing: 0;
+}
+
+.preset-2 {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.75rem; /* 28px */
+  line-height: 2rem; /* 32px */
+  letter-spacing: 0;
+}
+
+.preset-3-bold {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: 1rem; /* 16px */
+  line-height: 1.625rem; /* 26px */
+  letter-spacing: 0;
+}
+
+.preset-3-regular {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: 1rem; /* 16px */
+  line-height: 1.625rem; /* 26px */
+  letter-spacing: 0;
+}
+
+.preset-4 {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.625rem; /* 26px */
+  letter-spacing: 0;
+}
+
+.preset-5 {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: 0.8125rem; /* 13px */
+  line-height: 1rem; /* 16px */
+  letter-spacing: 0.125rem; /* 2px */
+}
+
+.preset-6 {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: 0.75rem; /* 12px */
+  line-height: 0.9375rem; /* 15px */
+  letter-spacing: 0.11563rem; /* 1.85px */
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 767px) {
+  .preset-1 {
+    font-size: 2rem; /* 32px on mobile */
+    line-height: 2.25rem; /* 36px on mobile */
+  }
+  
+  .preset-2 {
+    font-size: 1.5rem; /* 24px on mobile */
+    line-height: 1.75rem; /* 28px on mobile */
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-white { color: var(--color-white); }
+.text-black { color: var(--color-black); }
+.text-grey-950 { color: var(--color-grey-950); }
+.text-grey-500 { color: var(--color-grey-500); }
+.text-grey-300 { color: var(--color-grey-300); }
+.text-grey-100 { color: var(--color-grey-100); }
+.text-grey-50 { color: var(--color-grey-50); }
+.text-orange-500 { color: var(--color-orange-500); }
+.text-orange-300 { color: var(--color-orange-300); }
+
+.bg-white { background-color: var(--color-white); }
+.bg-black { background-color: var(--color-black); }
+.bg-grey-950 { background-color: var(--color-grey-950); }
+.bg-grey-500 { background-color: var(--color-grey-500); }
+.bg-grey-300 { background-color: var(--color-grey-300); }
+.bg-grey-100 { background-color: var(--color-grey-100); }
+.bg-grey-50 { background-color: var(--color-grey-50); }
+.bg-orange-500 { background-color: var(--color-orange-500); }
+.bg-orange-300 { background-color: var(--color-orange-300); }

@@ -1,0 +1,123 @@
+/* ===== PRODUCT INFO ===== */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-400);
+}
+
+.product-company {
+  color: var(--color-orange-500);
+  text-transform: uppercase;
+}
+
+.product-title {
+  color: var(--color-grey-950);
+  line-height: 1.1;
+}
+
+.product-description {
+  color: var(--color-grey-500);
+  line-height: 1.6;
+}
+
+.product-pricing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-200);
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+}
+
+.product-price-current {
+  color: var(--color-grey-950);
+}
+
+.product-price-discount {
+  background-color: var(--color-orange-300);
+  color: var(--color-orange-500);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.product-price-original {
+  color: var(--color-grey-300);
+  text-decoration: line-through;
+}
+
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-300);
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+/* ===== QUANTITY CONTROLS ===== */
+.quantity {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-grey-50);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  min-inline-size: 8rem;
+}
+
+.quantity-btn {
+  padding: var(--spacing-300);
+  transition: background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background-color: var(--color-grey-100);
+  }
+}
+
+.quantity-btn-icon {
+  inline-size: 0.75rem;
+  aspect-ratio: 1;
+}
+
+.quantity-value {
+  color: var(--color-grey-950);
+  padding-inline: var(--spacing-400);
+  min-inline-size: 2rem;
+  text-align: center;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-200);
+  padding: var(--spacing-300) var(--spacing-400);
+  border-radius: 0.5rem;
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, translate 0.2s ease-in-out;
+  min-inline-size: 8rem;
+}
+
+.btn-primary {
+  background-color: var(--color-orange-500);
+  color: var(--color-white);
+  box-shadow: 0 0.5rem 1rem rgba(255, 126, 27, 0.3);
+  &:hover {
+    background-color: var(--color-orange-300);
+    translate: 0 -0.125rem;
+  }
+}
+
+.btn-icon {
+  inline-size: 1rem;
+  aspect-ratio: 1;
+}

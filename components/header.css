@@ -1,0 +1,132 @@
+/* ===== HEADER & NAVIGATION ===== */
+.header {
+  border-bottom: 1px solid var(--color-grey-100);
+  background-color: var(--color-white);
+  block-size: var(--_header-height);
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  place-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-300);
+  inline-size: 100%;
+}
+
+.nav-menu-btn {
+  display: block;
+  padding: var(--spacing-100);
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-grey-50);
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.nav-menu-icon {
+  inline-size: 1rem;
+  aspect-ratio: 1;
+}
+
+.nav-logo-img {
+  inline-size: 8.5rem;
+  aspect-ratio: 7 / 1;
+}
+
+.nav-list {
+  display: none;
+  list-style: none;
+  gap: var(--spacing-400);
+  justify-self: start;
+
+  @media (width >= 768px){
+    display: flex;
+  }
+}
+
+.nav-link {
+  color: var(--color-grey-500);
+  text-decoration: none;
+  font-weight: var(--font-weight-regular);
+  transition: color 0.2s ease-in-out;
+  position: relative;
+
+  &:hover {
+    color: var(--color-grey-950);
+
+    &::after {
+      scale: 1 1;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2rem;
+    inset-inline: 0;
+    block-size: 3px;
+    background-color: var(--color-orange-500);
+    scale: 0 0;
+    transition: scale 0.2s ease-in-out;
+  }
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-300);
+}
+
+.nav-cart-btn {
+  position: relative;
+  padding: var(--spacing-100);
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-grey-50);
+  }
+}
+
+.nav-cart-icon {
+  aspect-ratio: 11 / 10;
+}
+
+.nav-cart-count {
+  position: absolute;
+  inset: 0 0 auto auto;
+  background-color: var(--color-orange-500);
+  color: var(--color-white);
+  font-size: 0.625rem;
+  font-weight: var(--font-weight-bold);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.5rem;
+  min-inline-size: 1.125rem;
+  text-align: center;
+  transform: translate(50%, -50%);
+  display: none;
+}
+
+.nav-avatar {
+  inline-size: 1.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease-in-out;
+
+  &:hover {
+    border-color: var(--color-orange-500);
+  }
+
+  @media (min-width: 768px) {
+    inline-size: 3.125rem;
+  }
+}

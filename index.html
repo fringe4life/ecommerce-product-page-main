@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | E-commerce product page</title>
+  <link rel="stylesheet" href="design-tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+    <nav class="nav">
+      <button class="nav-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <img src="./images/icon-menu.svg" alt="" class="nav-menu-icon">
+      </button>
+      
+      <div class="nav-logo">
+        <img src="./images/logo.svg" alt="Sneaker Company" class="nav-logo-img">
+      </div>
+      
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Collections</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Men</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Women</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Contact</a>
+        </li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="nav-cart-btn" aria-label="Open cart" aria-expanded="false">
+          <img src="./images/icon-cart.svg" alt="" class="nav-cart-icon">
+          <span class="nav-cart-count" aria-hidden="true">0</span>
+        </button>
+        <img src="./images/image-avatar.png" alt="User avatar" class="nav-avatar">
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+
+      <div class="product">
+        <div class="product-gallery">
+          <div class="gallery">
+            <div class="gallery-main">
+              <img src="./images/image-product-1.jpg" alt="Product image 1" class="gallery-main-img" data-index="0">
+              <button class="gallery-lightbox-btn" aria-label="Open lightbox">
+                <img src="./images/icon-view.svg" alt="" class="gallery-lightbox-icon">
+              </button>
+            </div>
+            
+            <div class="gallery-thumbnails">
+              <button class="gallery-thumb gallery-thumb-active" aria-label="View image 1" data-index="0">
+                <img src="./images/image-product-1-thumbnail.jpg" alt="" class="gallery-thumb-img">
+              </button>
+              <button class="gallery-thumb" aria-label="View image 2" data-index="1">
+                <img src="./images/image-product-2-thumbnail.jpg" alt="" class="gallery-thumb-img">
+              </button>
+              <button class="gallery-thumb" aria-label="View image 3" data-index="2">
+                <img src="./images/image-product-3-thumbnail.jpg" alt="" class="gallery-thumb-img">
+              </button>
+              <button class="gallery-thumb" aria-label="View image 4" data-index="3">
+                <img src="./images/image-product-4-thumbnail.jpg" alt="" class="gallery-thumb-img">
+              </button>
+            </div>
+            
+            <div class="gallery-controls">
+                      <button class="gallery-control gallery-control-prev" aria-label="Previous image">
+          <img src="./images/icon-previous.svg" alt="" class="gallery-control-icon">
+        </button>
+        <button class="gallery-control gallery-control-next" aria-label="Next image">
+          <img src="./images/icon-next.svg" alt="" class="gallery-control-icon">
+        </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product-info">
+          <div class="product-company preset-5">Sneaker Company</div>
+          <h1 class="product-title preset-1">Fall Limited Edition Sneakers</h1>
+          <p class="product-description preset-3-regular">
+            These low-profile sneakers are your perfect casual wear companion. Featuring a 
+            durable rubber outer sole, they'll withstand everything the weather can offer.
+          </p>
+          
+          <div class="product-pricing">
+            <div class="product-price">
+              <span class="product-price-current preset-2">$125.00</span>
+              <span class="product-price-discount preset-5">50%</span>
+            </div>
+            <div class="product-price-original preset-4">$250.00</div>
+          </div>
+          
+          <div class="product-actions">
+            <div class="quantity">
+              <button class="quantity-btn quantity-btn--minus" aria-label="Decrease quantity">
+                <img src="./images/icon-minus.svg" alt="" class="quantity-btn-icon">
+              </button>
+              <span class="quantity-value preset-3-bold">0</span>
+              <button class="quantity-btn quantity-btn--plus" aria-label="Increase quantity">
+                <img src="./images/icon-plus.svg" alt="" class="quantity-btn-icon">
+              </button>
+            </div>
+            
+            <button class="btn btn-primary btn-add-cart">
+              <img src="./images/icon-cart.svg" alt="" class="btn-icon">
+              Add to cart
+            </button>
+          </div>
+        </div>
+              </div>
+    </main>
+  </div>
+
+  <!-- Cart Dropdown -->
+  <dialog class="cart" aria-label="Shopping cart">
+    <div class="cart-header">
+      <h2 class="cart-title preset-3-bold">Cart</h2>
+    </div>
+    <div class="cart-content">
+      <div class="cart-empty">
+        <p class="cart-empty-text preset-3-regular">Your cart is empty.</p>
+      </div>
+      <div class="cart-items" aria-hidden="true">
+        <!-- Cart items will be dynamically inserted here -->
+      </div>
+              <button class="btn btn-primary btn-checkout" aria-hidden="true">
+        Checkout
+      </button>
+    </div>
+  </dialog>
+
+  <!-- Lightbox Modal -->
+  <dialog class="lightbox" aria-label="Product gallery">
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close lightbox">
+        <img src="./images/icon-close.svg" alt="" class="lightbox-close-icon">
+      </button>
+      
+      <div class="lightbox-gallery">
+        <div class="lightbox-main">
+          <img src="./images/image-product-1.jpg" alt="Product image 1" class="lightbox-main-img" data-index="0">
+        </div>
+        
+        <div class="lightbox-thumbnails">
+                        <button class="lightbox-thumb lightbox-thumb-active" aria-label="View image 1" data-index="0">
+            <img src="./images/image-product-1-thumbnail.jpg" alt="" class="lightbox-thumb-img">
+          </button>
+          <button class="lightbox-thumb" aria-label="View image 2" data-index="1">
+            <img src="./images/image-product-2-thumbnail.jpg" alt="" class="lightbox-thumb-img">
+          </button>
+          <button class="lightbox-thumb" aria-label="View image 3" data-index="2">
+            <img src="./images/image-product-3-thumbnail.jpg" alt="" class="lightbox-thumb-img">
+          </button>
+          <button class="lightbox-thumb" aria-label="View image 4" data-index="3">
+            <img src="./images/image-product-4-thumbnail.jpg" alt="" class="lightbox-thumb-img">
+          </button>
+        </div>
+        
+        <div class="lightbox-controls">
+                      <button class="lightbox-control lightbox-control-prev" aria-label="Previous image">
+            <img src="./images/icon-previous.svg" alt="" class="lightbox-control-icon">
+          </button>
+                      <button class="lightbox-control lightbox-control-next" aria-label="Next image">
+            <img src="./images/icon-next.svg" alt="" class="lightbox-control-icon">
+          </button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Mobile Menu -->
+  <dialog class="mobile-menu" aria-label="Mobile navigation">
+    <div class="mobile-menu-content">
+      <button class="mobile-menu-close" aria-label="Close menu">
+        <img src="./images/icon-close.svg" alt="" class="mobile-menu-close-icon">
+      </button>
+      
+      <nav class="mobile-menu-nav">
+        <ul class="mobile-menu-list">
+          <li class="mobile-menu-item">
+            <a href="#" class="mobile-menu-link preset-2">Collections</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a href="#" class="mobile-menu-link preset-2">Men</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a href="#" class="mobile-menu-link preset-2">Women</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a href="#" class="mobile-menu-link preset-2">About</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a href="#" class="mobile-menu-link preset-2">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
